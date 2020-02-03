@@ -37,8 +37,8 @@ class EmployeeComponent extends Component {
         const filteredEmployees = EmployeeList.filter( emp => emp['Full Name'].toLowerCase().includes(SearchField.toLowerCase()));
 
         return (
-            <div>
-                <h1>Search Project Employees</h1>
+            <div className='employeeComponentBody'>
+                <h1 className='employeeComponentH1'>Search Project Employees</h1>
                 <SearchBox
                     placeholder='Search Employees'
                     handleInputChange = {this.handleInputChange}

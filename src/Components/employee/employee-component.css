@@ -1,13 +1,14 @@
-h1{
+.employeeComponentH1{
     font-family: Roboto, cursive;
     /*font-size: 100px;*/
-    color: lightgreen;;
+    color: #2C6700;;
 }
 
-body {
+.employeeComponentBody {
     background: linear-gradient(
             to left,
             #2C6700 0%,
-            #92CD00 100%
+            #009b67 80%,
+            #badecf 100%
     );
 }
