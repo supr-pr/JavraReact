@@ -1,0 +1,13 @@
+h1{
+    font-family: Roboto, cursive;
+    /*font-size: 100px;*/
+    color: lightgreen;;
+}
+
+body {
+    background: linear-gradient(
+            to left,
+            #2C6700 0%,
+            #92CD00 100%
+    );
+}
