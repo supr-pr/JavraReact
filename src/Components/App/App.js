@@ -4,6 +4,7 @@ import { BrowserRouter as Router,  Switch, Route, Link } from 'react-router-dom'
 import './App.css';
 import EmployeeComponent from "../employee/employee-component";
 import HomePage from "../pages/homepage/homepage.component";
+import ShopPage from "../pages/shop/shop.component";
 
 const HatsPage = props => (
     <div>
@@ -28,9 +29,10 @@ class App extends Component {
         return (
             <div>
                 <Switch>
-                    <Route exact path='/' component={EmployeeComponent}/>
-                    <Route exact path='/home' component={HomePage}/>
-                    <Route path='/hats/:hatsid' component={HatsPage}/>
+                    <Route exact path='/home/' component={EmployeeComponent}/>
+                    <Route exact path='/' component={HomePage}/>
+                    <Route exact path='/shop/' component={ShopPage}/>
+                    {/*<Route path='/hats/:hatsid/' component={HatsPage}/>*/}
                 </Switch>
             </div>
         )
