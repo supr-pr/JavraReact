@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router,  Switch, Route, Link } from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 
 import './App.css';
 import EmployeeComponent from "../employee/employee-component";
@@ -8,12 +8,12 @@ import ShopPage from "../pages/shop/shop.component";
 import Header from "../header/header.component";
 import SignInAndSignUpPAge from "../pages/sign-in-and-sign-up/sign-in-and-sign-up.component";
 
-import { auth} from "../../firebase/firebase.utils";
+import {auth, createUserProfileDocument} from "../../firebase/firebase.utils";
 
 const HatsPage = props => (
     <div>
         <Link to='/home'>Home</Link>
-        <button onClick={ () => props.history.push('/')}>Employees</button>
+        <button onClick={() => props.history.push('/')}>Employees</button>
         <Link to={`${props.match.url}/12`}> to 12 Topic</Link>
         <h1>Hatsss: {props.match.params.hatsid}</h1>
     </div>
@@ -32,10 +32,27 @@ class App extends Component {
     unsubscribeFromAuth = null;
 
     componentDidMount() {
-        this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-            this.setState({ currentUser: user });
-        })
+        this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+            if (userAuth) {
+                const userRef = await createUserProfileDocument(userAuth);
+
+                userRef.onSnapshot(snapshot => {
+                    this.setState({
+                        currentUser: {
+                            id: snapshot.id,
+                            ...snapshot.data()
+                        }
+                    })
+                });
+            }
+            else {
+                this.setState({
+                    currentUser: userAuth
+                })
+            }
+        });
     }
+
 
     componentWillUnmount() {
         this.unsubscribeFromAuth();
