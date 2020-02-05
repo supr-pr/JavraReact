@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import { Switch, Route, Link} from 'react-router-dom';
 
 import './App.css';
 import EmployeeComponent from "../employee/employee-component";
@@ -69,7 +69,7 @@ class App extends Component {
                     <Route exact path='/' component={HomePage}/>
                     <Route exact path='/shop/' component={ShopPage}/>
                     <Route exact path='/signin/' component={SignInAndSignUpPAge}/>
-                    {/*<Route path='/hats/:hatsid/' component={HatsPage}/>*/}
+                    <Route path='/hats/:hatsid/' component={HatsPage}/>
                 </Switch>
             </div>
         )

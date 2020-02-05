@@ -2,7 +2,7 @@ import React from "react";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
-import {auth, createUserProfileDocument, signInWithGoogle} from "../../firebase/firebase.utils";
+import {auth, createUserProfileDocument} from "../../firebase/firebase.utils";
 
 import './sign-up.styles.scss';
 
@@ -76,6 +76,7 @@ class SignUp extends React.Component {
                         required
                         handleChange={this.handleChange}
                         label="Password"
+                        autoComplete="on"
                     />
                     <FormInput
                         name="confirmPassword"
@@ -84,6 +85,7 @@ class SignUp extends React.Component {
                         required
                         handleChange={this.handleChange}
                         label="Confirm Password"
+                        autoComplete="on"
                     />
                     <div className='buttons'>
                         <CustomButton type="submit">
